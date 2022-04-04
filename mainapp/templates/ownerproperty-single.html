@@ -1,0 +1,112 @@
+
+{% extends 'adminbase.html' %}
+{% load static %}
+{% block content_data %}<!--/header-->
+<section class="w3l-about-breadcrumb">
+    <div class="breadcrumb-bg breadcrumb-bg-about pt-5">
+        <div class="container pt-lg-5 py-3">
+        </div>
+    </div>
+</section>
+<section class="w3l-breadcrumb">
+    <div class="container">
+        <ul class="breadcrumbs-custom-path">
+            <li><a href="index.html">Home</a></li>
+            <li class="active"><span class="fa fa-angle-right mx-2" aria-hidden="true"></span> Furniture</li>
+            <li class="active"><span class="fa fa-angle-right mx-2" aria-hidden="true"></span> Furniture single</li>
+        </ul>
+    </div>
+</section>
+<!--/blog-post-->
+<section class="w3l-blog post-content py-5">
+    <div class="container py-lg-4 py-md-3 py-2">
+        <div class="inner mb-4">
+            <ul class="blog-single-author-date align-items-center">
+                <li>
+                    <div class="listing-category"><span>Rent</span></div>
+                </li>
+                <li><span class="fa fa-eye"></span> {{data.view_count}} views</li>
+            </ul>
+        </div>
+        <div class="post-content">
+            <h2 class="title-single"> {{data.title}}</h2>
+        </div>
+        <div class="blo-singl mb-4">
+            <ul class="blog-single-author-date align-items-center">
+                <li>
+                    <p>{{data.address}}</p>
+                </li>
+
+            </ul>
+            <ul class="share-post">
+                <a href="#url" class="cost-estate m-o">₹{{data.price}}</a>
+            </ul>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 w3l-news">
+                <div class="blog-single-post">
+                    <div class="single-post-image mb-5">
+                        <div class="owl-blog owl-carousel owl-theme">
+                            <div class="item">
+                                <div class="card">
+                                    <img src="{{data.image.url}}" class="img-fluid radius-image" alt="image">
+                                </div>
+                            </div>
+                            
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="single-post-content">
+                        <h3 class="post-content-title mb-3">Description</h3>
+                        <p class="mb-4">{{ data.description }}</p>
+                        <div class="single-bg-white">
+                            <h3 class="post-content-title mb-4">Furniture detail</h3>
+                            <ul class="details-list">
+                                <li><strong>Furniture id :</strong> {{data.property_id}} </li>
+                                <li><strong>Furniture size :</strong> {{data.sqrft}}sqft </li>
+
+                            </ul>
+                        </div>
+                        
+                        </div>
+                    </div>
+            
+    
+            <div class="sidebar-side col-lg-4 col-md-12 col-sm-12 mt-lg-0 mt-5">
+                <aside class="sidebar">
+
+                    <!-- Popular Post Widget-->
+                    <div class="sidebar-widget popular-posts">
+                        {% if request.session.email == data.email_id %}
+                        <a href="{% url 'deleteproperty' id=data.id %}" class="btn btn-danger btn-style w-100">Delete Furniture</a>
+                        {% elif data.rooms >= 1 %}
+                        <div class="sidebar-title">
+                          <h4>Contact an Agent</h4>
+                      </div>
+                        <article class="post">
+                          <figure class="post-thumb"><img src="{% static 'assets/images/l5.jpg' %}" class="radius-image" alt="">
+                          </figure>
+                          <div class="text mb-0">
+                              <div class="post-info">{{data.email_id}}</div>
+                          </div>
+                      </article>
+                        {% else %}
+                          <a href="#" onclick="alert(' No More Rooms Available...:( ');" class="btn btn-primary btn-style w-100">Request details</a>
+                        {% endif %}
+                      </div>
+                      <div class="sidebar-widget popular-posts">
+                         <a href="{% url 'Update_Owner_Property' data.id %}"><h3>Update Furniture</h3></a> 
+                      </div>
+
+                    <!-- Popular Post Widget-->
+                    
+                    
+                </aside>
+            </div>
+        </div>
+    </div>
+</section>
+<!--//blog-posts-->
+ <!-- footers 20 -->
+{% endblock content_data %}
