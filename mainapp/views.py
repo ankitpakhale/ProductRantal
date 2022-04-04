@@ -121,9 +121,6 @@ def Update_Owner_Property(request,id):
         if request.POST:
             obj.title = request.POST['title']
             obj.address = request.POST['address']
-            obj.beds_qty = request.POST['beds_qty']
-            obj.baths_qty =request.POST['baths_qty']
-            obj.sqrft = request.POST['sqrft']
             obj.price = request.POST['price']
             img = request.FILES.get('image')
             video = request.FILES.get('video')
@@ -132,42 +129,41 @@ def Update_Owner_Property(request,id):
             obj.description = request.POST['description']
             obj.country = request.POST['country']
             obj.city_type = request.POST['city_type']
-            obj.rooms = request.POST['rooms']
             ac = request.POST.get('AC')
             if ac == "on":
                 obj.AC = True
             else:
                 obj.AC = False
-            bw = request.POST.get('builtin_wardrobe')
-            if bw == 'on':
-                obj.builtin_wardrobe = True
-            else:
-                obj.builtin_wardrobe = False
-            dw = request.POST.get('dish_washer')
-            if dw == "on":
-                obj.dish_washer = True
-            else:
-                obj.dish_washer = False
-            fc = request.POST.get('floor_covering')
-            if fc == "on":
-                obj.floor_covering = True
-            else:
-                obj.floor_covering = False
-            med = request.POST.get('medical')
-            if med == "on":
-                obj.medical = True
-            else:
-                obj.medical = False
-            fen = request.POST.get('fencing')
-            if fen == "on":
-                obj.fencing = True
-            else:
-                obj.fencing = False
-            inte = request.POST.get('internet')
-            if inte == "on":
-                obj.internet = True
-            else:
-                obj.internet = False
+            # bw = request.POST.get('builtin_wardrobe')
+            # if bw == 'on':
+            #     obj.builtin_wardrobe = True
+            # else:
+            #     obj.builtin_wardrobe = False
+            # dw = request.POST.get('dish_washer')
+            # if dw == "on":
+            #     obj.dish_washer = True
+            # else:
+            #     obj.dish_washer = False
+            # fc = request.POST.get('floor_covering')
+            # if fc == "on":
+            #     obj.floor_covering = True
+            # else:
+            #     obj.floor_covering = False
+            # med = request.POST.get('medical')
+            # if med == "on":
+            #     obj.medical = True
+            # else:
+            #     obj.medical = False
+            # fen = request.POST.get('fencing')
+            # if fen == "on":
+            #     obj.fencing = True
+            # else:
+            #     obj.fencing = False
+            # inte = request.POST.get('internet')
+            # if inte == "on":
+            #     obj.internet = True
+            # else:
+            #     obj.internet = False
             obj.save()
             return redirect('OwnerProfileView',id)
         return render(request, 'owner_add_list.html',{'obj':obj,'owner_data':user_model})
@@ -562,7 +558,6 @@ def prop_booking(request,id):
                 model.date=date.today()
                 model.save()
                 prod.available=False
-                prod.rooms -= 1
                 prod.save()
             return render(request,'booking.html',{'users_data':user,'prod':prod,'wait':'WAIT for approval'})
     else:

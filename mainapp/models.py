@@ -17,19 +17,12 @@ class ListingModel(models.Model):
     title = models.CharField(max_length=50)
     address = models.TextField(max_length=200)
     
-    # to be removed
-    beds_qty = models.IntegerField(default=0)
-    baths_qty = models.IntegerField(default=0)
-    sqrft = models.IntegerField(default=0)
 
     price = models.IntegerField(default=0)
     image = models.ImageField(upload_to = "images/")
     video=models.FileField(upload_to="video/",default='',null=True,blank=True)
     description = models.TextField(max_length=500)
     country = models.CharField("Area",max_length=50)
-    
-    # city has to be add on models for filter
-    # city = models.CharField("City",max_length=50)
     
     city_type = models.CharField(max_length=50)
     property_id = models.IntegerField(default=0)
@@ -39,14 +32,12 @@ class ListingModel(models.Model):
     rooms = models.IntegerField(default=0)
     #Amenities
     AC = models.BooleanField(default=False)
-    builtin_wardrobe = models.BooleanField(default=False)
-    dish_washer = models.BooleanField(default=False)
-    floor_covering = models.BooleanField(default=False)
-    medical = models.BooleanField(default=False)
-    fencing = models.BooleanField(default=False)
-    internet = models.BooleanField(default=False)
-
-
+    # builtin_wardrobe = models.BooleanField(default=False)
+    # dish_washer = models.BooleanField(default=False)
+    # floor_covering = models.BooleanField(default=False)
+    # medical = models.BooleanField(default=False)
+    # fencing = models.BooleanField(default=False)
+    # internet = models.BooleanField(default=False)
 
 
     verified = models.BooleanField(default=False)

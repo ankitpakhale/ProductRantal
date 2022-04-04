@@ -70,10 +70,9 @@
                     <h3 class="post-content-title mb-3">Description</h3>
                     <p class="mb-4">{{ data.description }}</p>
                     <div class="single-bg-white">
-                        <h3 class="post-content-title mb-4">Furniture detail</h3>
+                        <h3 class="post-content-title mb-4">Product detail</h3>
                         <ul class="details-list">
-                            <li><strong>Furniture id :</strong> {{data.furniture_id}} </li>
-                            <li><strong>Furniture size :</strong> {{data.sqrft}}sqft </li>
+                            <li><strong>Product id :</strong> {{data.product_id}} </li>
                            </ul>
                     </div>
                     
@@ -87,7 +86,7 @@
                     <!-- Popular Post Widget-->
                     <div class="sidebar-widget popular-posts">
                         {% if request.session.email == data.email_id %}
-                        <a href="{% url 'deletefurniture' id=data.id %}" class="btn btn-danger btn-style w-100">Delete Furniture</a> {% elif data.rooms >= 1 %}
+                        <a href="{% url 'deletefurniture' id=data.id %}" class="btn btn-danger btn-style w-100">Delete Product</a> {% elif data.rooms >= 1 %}
                         <div class="sidebar-title">
                             <h4>Contact an Agent</h4>
                         </div>
@@ -99,7 +98,7 @@
                             </div>
                         </article>
                         {% else %}
-                        <a href="#" onclick="alert(' No More Rooms Available...:( ');" class="btn btn-primary btn-style w-100">Request details</a> {% endif %}
+                        <a href="#" onclick="alert(' No More Products Available...:( ');" class="btn btn-primary btn-style w-100">Request details</a> {% endif %}
                     </div>
 
 

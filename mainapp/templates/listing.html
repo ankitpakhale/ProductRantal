@@ -21,7 +21,7 @@
             <div class="row py-5">
 
                 <div class="col">
-                    <label>City Type:</label>
+                    <label>City Name:</label>
                     <select class="form-control" name="city_type">
         <option value="" >------</option>
         {% for list in apartment %}  
@@ -65,7 +65,7 @@
         <h2 style="text-align: center;">Search : </h2>
         <div class="container py-lg-5 py-md-4 py-2">
             <div class="row">
-                {% for i in apartment1 %} {% if i.rooms > 0 %}
+                {% for i in apartment1 %}
 
                 <div class="col-lg-4 col-md-6 listing-img">
                     <a href="{% url 'profile' id=i.id %}">
@@ -90,7 +90,7 @@
                     </div>
                 </div>
 
-                {% endif %} {% endfor %}
+                {% endfor %}
 
                 <!-- pagination -->
 
@@ -105,7 +105,7 @@
             <div class="row">
                 <!-- ₹ -->
 
-                {% if all_list.qs %} {% for i in all_list.qs %} {% if i.rooms > 0 %}
+                {% if all_list.qs %} {% for i in all_list.qs %} 
                 <div class="col-lg-4 col-md-6 listing-img">
                     <a href="{% url 'profile' id=i.id %}">
                         <div class="box16">
@@ -128,7 +128,7 @@
 
                     </div>
                 </div>
-                {% endif %} {% endfor %} {% else %}
+                {% endfor %} {% else %}
                 <h1 style="text-align: center;">No Data Available</h1>
                 {% endif %}
 
