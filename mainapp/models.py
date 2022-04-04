@@ -21,7 +21,7 @@ class ListingModel(models.Model):
     beds_qty = models.IntegerField(default=0)
     baths_qty = models.IntegerField(default=0)
     sqrft = models.IntegerField(default=0)
-    
+
     price = models.IntegerField(default=0)
     image = models.ImageField(upload_to = "images/")
     video=models.FileField(upload_to="video/",default='',null=True,blank=True)
@@ -31,7 +31,7 @@ class ListingModel(models.Model):
     # city has to be add on models for filter
     # city = models.CharField("City",max_length=50)
     
-    apartment_type = models.CharField(max_length=50)
+    city_type = models.CharField(max_length=50)
     property_id = models.IntegerField(default=0)
     
     # to be removed    

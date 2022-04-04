@@ -131,7 +131,7 @@ def Update_Owner_Property(request,id):
                 obj.image = img
             obj.description = request.POST['description']
             obj.country = request.POST['country']
-            obj.apartment_type = request.POST['apartment_type']
+            obj.city_type = request.POST['city_type']
             obj.rooms = request.POST['rooms']
             ac = request.POST.get('AC')
             if ac == "on":
@@ -197,9 +197,9 @@ def AllListView(request):
                 pricefilter = request.GET.get('pricefilter')
                 apartmenttype = ListingModel.objects.all()
                 print("Q other Data")
-                apartment = request.GET.get('apartment_type')
+                apartment = request.GET.get('city_type')
                 if apartment != '':
-                    list_model = ListingModel.objects.filter(apartment_type=apartment).order_by('price')
+                    list_model = ListingModel.objects.filter(city_type=apartment).order_by('price')
                     user_filter = FilterDemo(request.GET, queryset=list_model)
 
                 if pricefilter == 'low':
@@ -242,9 +242,9 @@ def AllListView(request):
                 pricefilter = request.GET.get('pricefilter')
                 apartmenttype = ListingModel.objects.all()
                 print("Q other Data")
-                apartment = request.GET.get('apartment_type')
+                apartment = request.GET.get('city_type')
                 if apartment != '':
-                    list_model = ListingModel.objects.filter(apartment_type=apartment).order_by('price')
+                    list_model = ListingModel.objects.filter(city_type=apartment).order_by('price')
                     user_filter = FilterDemo(request.GET, queryset=list_model)
 
                 if pricefilter == 'low':
@@ -290,9 +290,9 @@ def OwnerAllListView(request):
                 pricefilter = request.GET.get('pricefilter')
                 apartmenttype = ListingModel.objects.all()
                 print("Q other Data")
-                apartment = request.GET.get('apartment_type')
+                apartment = request.GET.get('city_type')
                 if apartment != '':
-                    list_model = ListingModel.objects.filter(apartment_type=apartment).order_by('price')
+                    list_model = ListingModel.objects.filter(city_type=apartment).order_by('price')
                     user_filter = FilterDemo(request.GET, queryset=list_model)
 
                 if pricefilter == 'low':
