@@ -26,5 +26,8 @@
 <b><p style="color: rgb(47, 0, 255)">{{ error }}</p></b>  <br>         
 </div>
 
+{% if msg %}
+<script>alert('{{ msg }}')</script>
+{% endif %}
  <!-- footers 20 -->
  {% endblock content_data %}

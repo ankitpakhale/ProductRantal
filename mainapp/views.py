@@ -584,6 +584,7 @@ def owner_Add_Listing(request):
 
 def prop_booking(request,id):
     if 'User_email' in request.session.keys():
+        msg = ''
         user=UserRegistration.objects.get(email_id=request.session['User_email'])
         prod=ListingModel.objects.get(id=id)
         if user.email_id == prod.email_id:
@@ -600,7 +601,8 @@ def prop_booking(request,id):
                 model.save()
                 prod.available=False
                 prod.save()
-            return render(request,'booking.html',{'users_data':user,'prod':prod,'wait':'WAIT for approval'})
+                msg = "Booking Request Sent"
+            return render(request,'booking.html',{'users_data':user,'prod':prod,'wait':'WAIT for approval', 'msg': msg})
     else:
         return redirect('login')
 
