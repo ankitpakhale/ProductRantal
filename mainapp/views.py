@@ -528,15 +528,56 @@ def owner_Add_Listing(request):
         print(user_model)
         model=ListingModel()
         count=0
+        # ----------------Old method-------------------------
+        # if request.POST:
+            # print("inside form method 01")
+            # form = ListForm(request.POST, request.FILES)
+            # print("Checking form validation")
+            # if form.is_valid():
+            #     print("Form is valid")
+            #     form.save()
+            #     print("01")
+            #     list_model = ListingModel.objects.latest('id')
+            #     print("02")
+            #     list_model.email_id = user_model.Owneremail
+            #     print("03")
+            #     list_model.property_id+=1
+            #     print("04")
+            #     list_model.save()        
+            #     print("05")
+            #     return redirect('Owner_myproperty')
+        # ----------------My method-------------------------
+        
         if request.POST:
-            form = ListForm(request.POST, request.FILES)
-            if form.is_valid():
-                form.save()
-                list_model = ListingModel.objects.latest('id')
-                list_model.email_id = user_model.Owneremail
-                list_model.property_id+=1
-                list_model.save()        
-                return redirect('Owner_myproperty')
+            print("01")
+            title = request.POST['title']
+            address = request.POST['address']
+            country = request.POST['country']
+            city_type = request.POST['city_type']
+            price = request.POST['price']
+            print("99")
+            # image = request.POST['image']
+            print("100")
+            video = request.POST['video']
+            description = request.POST['description']
+            print("02")
+            l = ListingModel()
+            print("03")
+            l.title = title
+            l.address = address
+            l.country = country
+            l.city_type = city_type
+            l.price = price
+            print("011")
+            # l.image = image
+            print("010")
+            l.video = video
+            l.description = description
+            print("04")
+            l.save()
+            print("05")
+            return redirect('Owner_myproperty')
+        
         return render(request, 'owner_add_list.html',{'owner_data':user_model})
     else:
         return redirect('ownerlogin')

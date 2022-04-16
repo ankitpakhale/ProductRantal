@@ -14,10 +14,12 @@ class ListingModel(models.Model):
     #details
     email_id = models.CharField(max_length=50,blank=True, null=True)
     view_count = models.IntegerField(default = 0)
+    property_id = models.IntegerField(default=0)
+    
+    
+    
     title = models.CharField(max_length=50)
     address = models.TextField(max_length=200)
-    
-
     price = models.IntegerField(default=0)
     image = models.ImageField(upload_to = "images/")
     video=models.FileField(upload_to="video/",default='',null=True,blank=True)
@@ -25,8 +27,7 @@ class ListingModel(models.Model):
     country = models.CharField("Area",max_length=50)
     
     city_type = models.CharField(max_length=50)
-    property_id = models.IntegerField(default=0)
-    
+        
     # to be removed    
     #property
     rooms = models.IntegerField(default=0)
@@ -39,11 +40,9 @@ class ListingModel(models.Model):
     # fencing = models.BooleanField(default=False)
     # internet = models.BooleanField(default=False)
 
-
     verified = models.BooleanField(default=False)
     available = models.BooleanField(default=True)
     
-
     def __str__(self):
         return self.title
 
