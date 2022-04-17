@@ -86,7 +86,6 @@
                     <!-- Popular Post Widget-->
                     <div class="sidebar-widget popular-posts">
                         {% if request.session.email == data.email_id %}
-                        <a href="{% url 'deletefurniture' id=data.id %}" class="btn btn-danger btn-style w-100">Delete Product</a> {% elif data.rooms >= 1 %}
                         <div class="sidebar-title">
                             <h4>Contact an Agent</h4>
                         </div>

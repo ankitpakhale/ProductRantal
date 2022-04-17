@@ -1,142 +1,144 @@
 {% load static %}
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Rental Product</title>
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- google fonts -->
-    <link href="//fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+  <title>Rental Product</title>
 
-    <!-- Template CSS -->
-    <link rel="stylesheet" href="{% static 'assets/css/style-starter.css' %}">
-  </head>
-  <body>
-<!--header-->
-<header id="site-header" class="fixed-top">
-  <div class="container">
+  <!-- google fonts -->
+  <link href="//fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <!-- Template CSS -->
+  <link rel="stylesheet" href="{% static 'assets/css/style-starter.css' %}">
+</head>
+
+<body>
+  <!--header-->
+  <header id="site-header" class="fixed-top">
+    <div class="container">
       <nav class="navbar navbar-expand-lg stroke px-0">
-          <h1> <a class="navbar-brand" href="{% url 'UserIndexPage' %}">
-                  <span class="fa fa-home"></span> Rental Product
-              </a></h1>
-          <!-- if logo is image enable this   
+        <h1> <a class="navbar-brand" href="{% url 'UserIndexPage' %}">
+            <span class="fa fa-home"></span> Rental Product
+          </a></h1>
+        <!-- if logo is image enable this   
   <a class="navbar-brand" href="#index.html">
       <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
   </a> -->
-          <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse"
-              data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
-              aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
-              <span class="navbar-toggler-icon fa icon-close fa-times"></span>
-          </button>
+        <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse"
+          data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+          <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+        </button>
 
-          <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-              <ul class="navbar-nav ml-lg-5 mr-auto">
-                  <li class="nav-item active">
-                      <a class="nav-link" href="{% url 'UserIndexPage' %}">Home <span class="sr-only">(current)</span></a>
-                  </li>
-                  <li class="nav-item @@listing__active">
-                      <a class="nav-link" href="{% url 'alllist' %}">Product</a>
-                  </li>
-                  <li class="nav-item @@listing__active">
-                    <a class="nav-link" href="{% url 'UserBooks' %}">Bookings</a>
-                </li>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <ul class="navbar-nav ml-lg-5 mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'UserIndexPage' %}">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item @@listing__active">
+              <a class="nav-link" href="{% url 'alllist' %}">Product</a>
+            </li>
 
+            <li class="nav-item @@listing__active">
+              <a class="nav-link" href="{% url 'UserBooks' %}">Bookings</a>
+            </li>
 
-              </ul>
-              
-              {% if users_data %}
-              <div class="top-quote mt-lg-0">
-                <a href="#">{{ users_data.full_name }}</a>
-                </div>
-                &nbsp;
-                &nbsp;
-              <!-- <div class="top-quote mt-lg-0">
+          </ul>
+
+          {% if users_data %}
+          <div class="top-quote mt-lg-0">
+            <a href="#">{{ users_data.full_name }}</a>
+          </div>
+          &nbsp;
+          &nbsp;
+          <!-- <div class="top-quote mt-lg-0">
                   <a href="{% url 'addlist' %}" class="btn btn-style btn-primary"><span class="fa fa-home"></span> Add
                       Product</a>
               </div> -->
-              <div class="top-quote mt-lg-0">
-                <a href="{% url 'myproperty' %}" style="margin-left: 10px;" class="btn btn-style btn-info"> My
-                  Product</a>
-            </div>
-            {% endif %}
-      
-            {% if owner_data %}
-            <div class="top-quote mt-lg-0">
-                <a href="{% url 'owneraddlist' %}" class="btn btn-style btn-primary"><span class="fa fa-home"></span> Add
-                    Product</a>
-            </div>
-            <div class="top-quote mt-lg-0">
-              <a href="{% url 'myproperty' %}" style="margin-left: 10px;" class="btn btn-style btn-info"> My
-                Product</a>
+          <div class="top-quote mt-lg-0">
+            <a href="{% url 'myproperty' %}" style="margin-left: 10px;" class="btn btn-style btn-info"> My
+              Product</a>
           </div>
           {% endif %}
-          
-        
-            {% if users_data %}
-              <div class="search mx-3">
-                <div class="top-quote mt-lg-0">
-                  <a href="{% url 'logout' %}" class="btn btn-style btn-danger" style="color: white;">Sign-out</a>
-                </div>
-              </div>
-            {% elif owner_data %}
-              <div class="search mx-3">
-                <div class="top-quote mt-lg-0">
-                  <a href="{% url 'Owner_logout' %}" class="btn btn-style btn-danger" style="color: white;">Sign-out</a>
-                </div>
-              </div>
-            {% else %}
-              <div class="search mx-3">
-                <div class="top-quote mt-lg-0">
-                  <a href="{% url 'login' %}" class="btn btn-style btn-danger" style="color: white;">Sign-In</a>
-                </div>
-              </div>
-            {% endif %}
-              
-              <!--/search-right-->
-              
-              <!--//search-right-->
-          </div>
 
-          <!-- toggle switch for light and dark theme -->
-          <div class="mobile-position">
-              <nav class="navigation">
-                  <div class="theme-switch-wrapper">
-                      <label class="theme-switch" for="checkbox">
-                          <input type="checkbox" id="checkbox">
-                          <div class="mode-container">
-                              <i class="gg-sun"></i>
-                              <i class="gg-moon"></i>
-                          </div>
-                      </label>
-                  </div>
-              </nav>
+          {% if owner_data %}
+          <div class="top-quote mt-lg-0">
+            <a href="{% url 'owneraddlist' %}" class="btn btn-style btn-primary"><span class="fa fa-home"></span> Add
+              Product</a>
           </div>
-          <!-- //toggle switch for light and dark theme -->
+          <div class="top-quote mt-lg-0">
+            <a href="{% url 'myproperty' %}" style="margin-left: 10px;" class="btn btn-style btn-info"> My
+              Product</a>
+          </div>
+          {% endif %}
+
+
+          {% if users_data %}
+          <div class="search mx-3">
+            <div class="top-quote mt-lg-0">
+              <a href="{% url 'logout' %}" class="btn btn-style btn-danger" style="color: white;">Sign-out</a>
+            </div>
+          </div>
+          {% elif owner_data %}
+          <div class="search mx-3">
+            <div class="top-quote mt-lg-0">
+              <a href="{% url 'Owner_logout' %}" class="btn btn-style btn-danger" style="color: white;">Sign-out</a>
+            </div>
+          </div>
+          {% else %}
+          <div class="search mx-3">
+            <div class="top-quote mt-lg-0">
+              <a href="{% url 'login' %}" class="btn btn-style btn-danger" style="color: white;">Sign-In</a>
+            </div>
+          </div>
+          {% endif %}
+
+          <!--/search-right-->
+
+          <!--//search-right-->
+        </div>
+
+        <!-- toggle switch for light and dark theme -->
+        <div class="mobile-position">
+          <nav class="navigation">
+            <div class="theme-switch-wrapper">
+              <label class="theme-switch" for="checkbox">
+                <input type="checkbox" id="checkbox">
+                <div class="mode-container">
+                  <i class="gg-sun"></i>
+                  <i class="gg-moon"></i>
+                </div>
+              </label>
+            </div>
+          </nav>
+        </div>
+        <!-- //toggle switch for light and dark theme -->
       </nav>
-  </div>
-</header>
-<!--/header-->
+    </div>
+  </header>
+  <!--/header-->
 
 
 
-{% block content_data %}
-  
-{% endblock content_data %}
+  {% block content_data %}
+
+  {% endblock content_data %}
 
 
 
 
 
-<!-- /bottom-grids-->
+  <!-- /bottom-grids-->
 
-<!--  //News section -->
+  <!--  //News section -->
 
- <!-- footers 20 -->
- <section class="w3l-footers-20">
+  <!-- footers 20 -->
+  <section class="w3l-footers-20">
     <div class="footers20">
       <div class="container">
         <div class="footers20-content">
@@ -145,7 +147,7 @@
               <a href="#url" class="link"><span class="fa fa-comments"></span></a>
               <a href="#url" class="title-small">Free consultation</a>
               <h4>Schedule a free consultation with our specialist.</h4>
-             
+
             </div>
             <div class="column">
               <a href="#url" class="link"><span class="fa fa-phone"></span></a>
@@ -157,9 +159,9 @@
               </a>
             </div>
             <div class="column mt-lg-0 mt-md-5">
-          
+
               <form action="#" class="subscribe-form mt-4" method="post">
-  
+
               </form>
               <ul class="footers-17_social">
                 <h4 class="d-inline mr-4">Follow us</h4>
@@ -184,7 +186,7 @@
       window.onscroll = function () {
         scrollFunction()
       };
-  
+
       function scrollFunction() {
         if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
           document.getElementById("movetop").style.display = "block";
@@ -192,7 +194,7 @@
           document.getElementById("movetop").style.display = "none";
         }
       }
-  
+
       // When the user clicks on the button, scroll to the top of the document
       function topFunction() {
         document.body.scrollTop = 0;
@@ -201,12 +203,12 @@
     </script>
     <!-- /move top -->
   </section>
-  
+
   <!-- jQuery and Bootstrap JS -->
   <script src="{% static 'assets/js/jquery-3.3.1.min.js' %}"></script>
-  
+
   <script src="{% static 'assets/js/theme-change.js' %}"></script><!-- theme switch js (light and dark)-->
-  
+
   <!-- stats number counter-->
   <script src="{% static 'assets/js/jquery.waypoints.min.js' %}"></script>
   <script src="{% static 'assets/js/jquery.countup.js' %}"></script>
@@ -214,7 +216,7 @@
     $('.counter').countUp();
   </script>
   <!-- //stats number counter -->
-  
+
   <!-- owlcarousel -->
   <script src="{% static 'assets/js/owl.carousel.js' %}"></script>
   <!-- script for blog post slider -->
@@ -251,7 +253,7 @@
     })
   </script>
   <!-- //script for blog post slider -->
-  
+
   <!-- script for tesimonials carousel slider -->
   <script>
     $(document).ready(function () {
@@ -274,44 +276,44 @@
     })
   </script>
   <!-- //script for tesimonials carousel slider -->
-  
+
   <script src="{% static 'assets/js/jquery.magnific-popup.min.js' %}"></script>
   <script>
     $(document).ready(function () {
       $('.popup-with-zoom-anim').magnificPopup({
         type: 'inline',
-  
+
         fixedContentPos: false,
         fixedBgPos: true,
-  
+
         overflowY: 'auto',
-  
+
         closeBtnInside: true,
         preloader: false,
-  
+
         midClick: true,
         removalDelay: 300,
         mainClass: 'my-mfp-zoom-in'
       });
-  
+
       $('.popup-with-move-anim').magnificPopup({
         type: 'inline',
-  
+
         fixedContentPos: false,
         fixedBgPos: true,
-  
+
         overflowY: 'auto',
-  
+
         closeBtnInside: true,
         preloader: false,
-  
+
         midClick: true,
         removalDelay: 300,
         mainClass: 'my-mfp-slide-bottom'
       });
     });
   </script>
-  
+
   <!-- disable body scroll which navbar is in active -->
   <script>
     $(function () {
@@ -321,19 +323,19 @@
     });
   </script>
   <!-- disable body scroll which navbar is in active -->
-  
+
   <!-- MENU-JS -->
   <script>
     $(window).on("scroll", function () {
       var scroll = $(window).scrollTop();
-  
+
       if (scroll >= 80) {
         $("#site-header").addClass("nav-fixed");
       } else {
         $("#site-header").removeClass("nav-fixed");
       }
     });
-  
+
     //Main navigation Active Class Add Remove
     $(".navbar-toggler").on("click", function () {
       $("header").toggleClass("active");
@@ -350,10 +352,10 @@
     });
   </script>
   <!-- //MENU-JS -->
-  
+
   <!-- bootstrap -->
   <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
-  
-  </body>
-  
-  </html>
+
+</body>
+
+</html>

@@ -493,26 +493,28 @@ def owner_Add_Listing(request):
         
         if request.POST:
             print("01")
+            email_id = user_model
             title = request.POST['title']
             address = request.POST['address']
             country = request.POST['country']
             city_type = request.POST['city_type']
             price = request.POST['price']
             print("99")
-            # image = request.POST['image']
+            image = request.FILES['image']
             print("100")
             video = request.POST['video']
             description = request.POST['description']
             print("02")
             l = ListingModel()
             print("03")
+            l.email_id = email_id
             l.title = title
             l.address = address
             l.country = country
             l.city_type = city_type
             l.price = price
             print("011")
-            # l.image = image
+            l.image = image
             print("010")
             l.video = video
             l.description = description
