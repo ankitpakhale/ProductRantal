@@ -39,63 +39,6 @@ def LoginUserView(request):
             return render(request,'login.html',{'error': "INCORRECT USERNAME" })
     return render(request, 'login.html')
 
-def forgot_pass(request):
-    email=request.POST.get('email')
-    request.session['email'] = email
-    if email==None:
-        return render(request,'email.html')
-    print(email)
-    otp=""
-    rand1=random.choice('0123456789')
-    rand2=random.choice('0123456789')
-    rand3=random.choice('0123456789')
-    rand4=random.choice('0123456789')
-    otp=rand1+rand2+rand3+rand4
-    print(otp)
-    request.session['otp']=otp
-
-    port = 465
-    password = "mailtest123@"
-    context = ssl.create_default_context()
-    server = smtplib.SMTP_SSL("smtp.gmail.com",port,context=context)
-    server.login("mailtesting681@gmail.com",password)
-    msg=MIMEText("welcome\n" + email + "\nyour otp is : "+ otp +"\nplease don't share with others")
-    msg['subject']='security mail'
-    server.sendmail("mailtesting681@gmail.com",email,msg.as_string())
-    server.quit()
-    print(msg)
-    
-    return redirect('otpcheck')
-
-def otpcheck(request):
-    if request.session.has_key('otp'):
-        otp=request.session['otp']
-        try:
-            otpobj=request.POST.get('otp')
-            if otpobj==None:
-                return render(request,'otp.html')
-            if otp==request.POST.get('otp'):
-                return redirect('newpwd')
-            else:
-                return HttpResponse("<a href=''>wrong otp entered</a>")
-        except:
-            return redirect('login')
-    return render(request,'otp.html')
-
-def newpwd(request):
-    if request.session.has_key('email'):
-        newpassword=request.POST.get('password')
-        if newpassword==None:
-            return render(request,'forget.html')
-        obj=UserRegistration.objects.get(email_id=request.session['email'])
-        obj.password=newpassword
-        obj.save()
-        del request.session['email']
-        return redirect('login')
-    else:
-            return redirect('login')
-    return render(request,'forget.html')
-
 def Add_Listing(request):
     if 'User_email' in request.session.keys():
         user_model = UserRegistration.objects.get(email_id=request.session['User_email'])

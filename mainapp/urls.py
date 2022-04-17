@@ -31,7 +31,4 @@ urlpatterns = [
     path('userbuy/',userbuy,name='userbuy'),
     path('getdetails/<int:id>/',getdetails,name='getdetails'),
     
-    path('forgotpass/',forgot_pass,name = 'forgotpass'),
-    path('newpassword/',newpwd,name="newpwd"),
-    path('otpcheck/',otpcheck,name='otpcheck'),
 ]
